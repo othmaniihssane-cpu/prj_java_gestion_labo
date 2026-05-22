@@ -6,8 +6,6 @@ Ce depot contient le code source de Labo Pro, une application de bureau developp
 
 ## Guide visuel de l'interface
 
-Le dossier de captures d'ecran montre les differents aspects de l'interface graphique a travers douze captures distinctes.
-
 ### Tableau de bord general et vue principale
 
 * **Vue globale en mode clair (1.png)** : Cette capture montre le tableau de bord general lors du premier demarrage en mode clair. L'arriere-plan blanc pur et les cartes d'indicateurs de couleur claire mettent en evidence le nombre de patients inscrits, les analyses en cours et les gains financiers. Le graphique central montre la repartition quotidienne des analyses.
