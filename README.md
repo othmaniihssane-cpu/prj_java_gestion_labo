@@ -24,10 +24,9 @@ Le dossier de captures d'ecran montre les differents aspects de l'interface grap
 ![Dialogue nouvelle analyse](screenshots/3.png)
 
 * **Saisie des resultats numeriques (8.png)** : Formulaire de validation des mesures du laboratoire par rapport aux valeurs de reference.
-![Dialogue de saisie de resultats](screenshots/8.png)
+![Interface de facturation](screenshots/4.png)
 
 * **Filtres de recherche multicriteria (9.png)** : Panneau de recherche approfondie pour extraire l'historique d'un patient.
-
 
 ![Filtres de recherche](screenshots/9.png)
 
@@ -36,10 +35,11 @@ Le dossier de captures d'ecran montre les differents aspects de l'interface grap
 ### Gestion des examens et base de donnees
 
 * **Liste des analyses medicales (3.png)** : Affiche le tableau de suivi des examens medicaux avec les statuts colores pour chaque echantillon.
+![Dialogue de saisie de resultats](screenshots/8.png)
 ![Dialogue nouvelle analyse](screenshots/7.png)
 
 * **Detail de la facturation et paiements (4.png)** : Montre la gestion financiere de chaque dossier avec les boutons contextuels pour declencher un encaissement rapide ou imprimer une quittance.
-![Interface de facturation](screenshots/4.png)
+
 
 * **Formulaire de configuration du laboratoire (5.png)** : Permet de renseigner les informations de contact et le nom du medecin biologiste responsable pour personnaliser l'en-tete des documents.
 
