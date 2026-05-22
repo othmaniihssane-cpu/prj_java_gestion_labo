@@ -81,62 +81,63 @@ L'application est construite selon le patron de conception MVC (Modele-Vue-Contr
 * **DAO** : Les classes du dossier `src/dao` executent les requetes SQL de creation, lecture, mise a jour et suppression dans la base MySQL.
 
 ```mermaid
-graph TD
-    %% Define Styles
-    classDef ui fill:#3B82F6,stroke:#1E3A8A,stroke-width:2px,color:#fff;
-    classDef controller fill:#10B981,stroke:#065F46,stroke-width:2px,color:#fff;
-    classDef dao fill:#F59E0B,stroke:#92400E,stroke-width:2px,color:#fff;
-    classDef db fill:#EF4444,stroke:#991B1B,stroke-width:2px,color:#fff;
-    classDef model fill:#8B5CF6,stroke:#5B21B6,stroke-width:2px,color:#fff;
+flowchart TD
+    U([Utilisateur]) --> V
 
-    %% Architecture Nodes
-    subgraph UI ["Couche Présentation (Vue - FXML & CSS)"]
-        V1["dashboard.fxml (Tableau de bord)"]:::ui
-        V2["analyse_view.fxml (Gestion Analyses)"]:::ui
-        V3["styles.css & dark-theme.css"]:::ui
+    subgraph V ["Vue (FXML + CSS)"]
+        V1[dashboard.fxml]
+        V2[analyse_view.fxml]
+        V3[styles.css / dark-theme.css]
     end
 
-    subgraph CTRL ["Couche Contrôle (Contrôleurs JavaFX)"]
-        C1["DashboardController.java"]:::controller
-        C2["AnalyseController.java"]:::controller
+    V -->|Clics & saisies| C
+
+    subgraph C ["Contrôleur (Java)"]
+        C1[DashboardController]
+        C2[AnalyseController]
     end
 
-    subgraph DAO ["Couche Accès Données (DAO)"]
-        D1["PatientDAO.java"]:::dao
-        D2["AnalyseDAO.java"]:::dao
-        D3["TypeAnalyseDAO.java"]:::dao
+    C -->|Appelle les méthodes CRUD| D
+
+    subgraph D ["DAO (Accès données)"]
+        D1[PatientDAO]
+        D2[AnalyseDAO]
+        D3[TypeAnalyseDAO]
     end
 
-    subgraph DB ["Moteur de Stockage (MySQL)"]
-        DB1[("Base de Données MySQL")]:::db
+    D -->|Requêtes SQL| DB[("MySQL<br/>Base de données")]
+    DB -->|Résultats| D
+    D -->|Objets Java| M
+
+    subgraph M ["Modèle (JavaBeans)"]
+        M1[Patient]
+        M2[Analyse]
+        M3[TypeAnalyse]
+        M4[Facture]
     end
 
-    subgraph MDL ["Couche Modèle (Entités/JavaBeans)"]
-        M1["Patient.java"]:::model
-        M2["Analyse.java"]:::model
-        M3["TypeAnalyse.java"]:::model
-        M4["Facture.java"]:::model
-    end
+    M -->|Données formatées| C
+    C -->|Met à jour l affichage| V
+    V -->|Interface actualisée| U
 
-    %% Architecture Links
-    V1 -->|Événements utilisateur| C1
-    V2 -->|Événements utilisateur| C2
-    C1 -->|Applique les styles| V3
-    C2 -->|Applique les styles| V3
-
-    C1 -->|Consulte / Modifie| D1
-    C1 -->|Consulte / Modifie| D2
-    C2 -->|Consulte / Modifie| D3
-
-    D1 -->|Requêtes SQL CRUD| DB1
-    D2 -->|Requêtes SQL CRUD| DB1
-    D3 -->|Requêtes SQL CRUD| DB1
-
-    D1 .->|Mappe les données| M1
-    D2 .->|Mappe les données| M2
-    D3 .->|Mappe les données| M3
-    C1 .->|Utilise les entités| MDL
-    C2 .->|Utilise les entités| MDL
+    style U fill:#6366F1,stroke:#4338CA,color:#fff
+    style V fill:#3B82F6,stroke:#1E40AF,color:#fff
+    style V1 fill:#60A5FA,stroke:#2563EB,color:#fff
+    style V2 fill:#60A5FA,stroke:#2563EB,color:#fff
+    style V3 fill:#60A5FA,stroke:#2563EB,color:#fff
+    style C fill:#10B981,stroke:#047857,color:#fff
+    style C1 fill:#34D399,stroke:#059669,color:#fff
+    style C2 fill:#34D399,stroke:#059669,color:#fff
+    style D fill:#F59E0B,stroke:#D97706,color:#fff
+    style D1 fill:#FBBF24,stroke:#F59E0B,color:#fff
+    style D2 fill:#FBBF24,stroke:#F59E0B,color:#fff
+    style D3 fill:#FBBF24,stroke:#F59E0B,color:#fff
+    style DB fill:#EF4444,stroke:#B91C1C,color:#fff
+    style M fill:#8B5CF6,stroke:#6D28D9,color:#fff
+    style M1 fill:#A78BFA,stroke:#7C3AED,color:#fff
+    style M2 fill:#A78BFA,stroke:#7C3AED,color:#fff
+    style M3 fill:#A78BFA,stroke:#7C3AED,color:#fff
+    style M4 fill:#A78BFA,stroke:#7C3AED,color:#fff
  ```
  ### Logique du changement de theme
 
