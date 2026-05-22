@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.StackedBarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="720" prefWidth="1100" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardController">
+
+    <!-- ============================================
+         LEFT SIDEBAR
+         ============================================ -->
+    <left>
+        <VBox fx:id="sidebarVBox" minWidth="65" prefWidth="220" styleClass="sidebar">
+            <!-- Logo / App Title -->
+            <HBox alignment="CENTER_LEFT" spacing="8" styleClass="sidebar-header">
+                <StackPane styleClass="icon-circle-sidebar">
+                    <Region prefHeight="16" prefWidth="16" styleClass="flat-icon, icon-microscope-white" />
+                </StackPane>
+                <Label fx:id="lblLogoText" minWidth="90" style="-fx-text-fill: -color-text-white; -fx-font-size: 18; -fx-font-weight: bold;" text="Labo Pro" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Button fx:id="btnPin" onAction="#handleTogglePin" style="-fx-background-color: transparent; -fx-cursor: hand;">
+                    <graphic>
+                        <Region fx:id="iconPin" prefHeight="16" prefWidth="16" styleClass="flat-icon, icon-pin-white" />
+                    </graphic>
+                </Button>
+            </HBox>
+
+            <Separator />
+
+            <!-- Navigation -->
+            <VBox spacing="4" style="-fx-padding: 15 12;">
+                <Button fx:id="navDashboard" alignment="CENTER_LEFT" maxWidth="Infinity" onAction="#handleNavDashboard" styleClass="nav-btn-active">
+                    <graphic>
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Region prefHeight="16" prefWidth="16" styleClass="flat-icon, icon-dashboard" />
+                            <Label styleClass="nav-label" text="Dashboard" />
+                        </HBox>
+                    </graphic>
+                </Button>
+                <Button fx:id="navPatients" alignment="CENTER_LEFT" maxWidth="Infinity" onAction="#handleNavPatients" styleClass="nav-btn">
+                    <graphic>
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Region prefHeight="16" prefWidth="16" styleClass="flat-icon, icon-patients" />
+                            <Label styleClass="nav-label" text="Patients" />
+                        </HBox>
+                    </graphic>
+                </Button>
+                <Button fx:id="navAnalyses" alignment="CENTER_LEFT" maxWidth="Infinity" onAction="#handleNavAnalyses" styleClass="nav-btn">
+                    <graphic>
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Region prefHeight="16" prefWidth="16" styleClass="flat-icon, icon-flask" />
+                            <Label styleClass="nav-label" text="Analyses" />
+                        </HBox>
+                    </graphic>
+                </Button>
+                <Button fx:id="navFacturation" alignment="CENTER_LEFT" maxWidth="Infinity" onAction="#handleNavFacturation" styleClass="nav-btn">
+                    <graphic>
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Region prefHeight="16" prefWidth="16" styleClass="flat-icon, icon-invoice" />
+                            <Label styleClass="nav-label" text="Facturation" />
+                        </HBox>
+                    </graphic>
+                </Button>
+                <Button fx:id="navParametres" alignment="CENTER_LEFT" maxWidth="Infinity" onAction="#handleNavParametres" styleClass="nav-btn">
+                    <graphic>
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Region prefHeight="16" prefWidth="16" styleClass="flat-icon, icon-settings" />
+                            <Label styleClass="nav-label" text="Paramètres" />
+                        </HBox>
+                    </graphic>
+                </Button>
+            </VBox>
+
+            <Region VBox.vgrow="ALWAYS" />
+        </VBox>
+    </left>
+
+    <!-- ============================================
+         CENTER CONTENT
+         ============================================ -->
+    <center>
+        <VBox>
+            <!-- === TOP BAR === -->
+            <HBox alignment="CENTER_RIGHT" spacing="10" styleClass="top-bar">
+                <Region HBox.hgrow="ALWAYS" />
+                <StackPane styleClass="avatar-circle">
+                    <Region prefHeight="14" prefWidth="14" styleClass="flat-icon, icon-user-dark" />
+                </StackPane>
+                <Label style="-fx-text-fill: -color-text-title; -fx-font-size: 14; -fx-font-weight: bold;" text="Admin" />
+                <Label style="-fx-text-fill: -color-text-placeholder; -fx-font-size: 9;" text="▼" />
+            </HBox>
+
+            <!-- === SWITCHABLE PANELS (StackPane) === -->
+            <StackPane fx:id="contentStack" VBox.vgrow="ALWAYS">
+
+                <!-- ===== PANEL 1: DASHBOARD ===== -->
+                <ScrollPane fx:id="panelDashboard" fitToWidth="true" hbarPolicy="NEVER" styleClass="content-scroll">
+                    <VBox spacing="20" style="-fx-padding: 25;">
+
+                        <!-- ACTION BUTTONS ROW -->
+                        <HBox alignment="CENTER" spacing="15">
+                            <Button maxWidth="Infinity" onAction="#handleAddPatient" styleClass="action-btn" HBox.hgrow="ALWAYS">
+                                <graphic>
+                                    <HBox alignment="CENTER" spacing="8">
+                                        <Region prefHeight="16" prefWidth="16" styleClass="flat-icon, icon-user-dark" />
+                                        <Label style="-fx-text-fill: -color-text-normal; -fx-font-size: 13;" text="Ajouter Patient" />
+                                    </HBox>
+                                </graphic>
+                            </Button>
+                            <Button maxWidth="Infinity" onAction="#handleAddAnalyse" styleClass="action-btn-primary" HBox.hgrow="ALWAYS">
+                                <graphic>
+                                    <HBox alignment="CENTER" spacing="8">
+                                        <Label style="-fx-text-fill: -color-text-white; -fx-font-size: 16; -fx-font-weight: bold;" text="+" />
+                                        <Label style="-fx-text-fill: -color-text-white; -fx-font-size: 13; -fx-font-weight: bold;" text="Créer Analyse" />
+                                    </HBox>
+                                </graphic>
+                            </Button>
+                            <Button maxWidth="Infinity" onAction="#handleAddType" styleClass="action-btn" HBox.hgrow="ALWAYS">
+                                <graphic>
+                                    <HBox alignment="CENTER" spacing="8">
+                                        <Region prefHeight="16" prefWidth="16" styleClass="flat-icon, icon-flask-dark" />
+                                        <Label style="-fx-text-fill: -color-text-normal; -fx-font-size: 13;" text="Ajouter type d'analyse" />
+                                    </HBox>
+                                </graphic>
+                            </Button>
+                            <Button maxWidth="Infinity" onAction="#showAdvancedSearchDialog" styleClass="action-btn" HBox.hgrow="ALWAYS">
+                                <graphic>
+                                    <HBox alignment="CENTER" spacing="8">
+                                        <Region prefHeight="16" prefWidth="16" styleClass="flat-icon, icon-search-dark" />
+                                        <Label style="-fx-text-fill: -color-text-normal; -fx-font-size: 13;" text="Recherche Avancée" />
+                                    </HBox>
+                                </graphic>
+                            </Button>
+                        </HBox>
+
+                        <!-- KPI CARDS -->
+                        <HBox spacing="15">
+                            <VBox spacing="8" styleClass="kpi-card-blue" HBox.hgrow="ALWAYS">
+                                <HBox alignment="CENTER_LEFT" spacing="12">
+                                    <StackPane styleClass="kpi-icon-circle-blue">
+                                        <Region prefHeight="18" prefWidth="18" styleClass="flat-icon, icon-chart-blue" />
+                                    </StackPane>
+                                    <VBox spacing="2">
+                                        <Label fx:id="lblTotalAnalyses" style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: #2563EB;" text="0" />
+                                        <Label style="-fx-text-fill: -color-text-muted; -fx-font-size: 11;" text="Analyses Aujourd'hui" />
+                                    </VBox>
+                                </HBox>
+                            </VBox>
+                            <VBox spacing="8" styleClass="kpi-card-yellow" HBox.hgrow="ALWAYS">
+                                <HBox alignment="CENTER_LEFT" spacing="12">
+                                    <StackPane styleClass="kpi-icon-circle-yellow">
+                                        <Region prefHeight="18" prefWidth="18" styleClass="flat-icon, icon-clock-yellow" />
+                                    </StackPane>
+                                    <VBox spacing="2">
+                                        <Label fx:id="lblEnCours" style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: #D97706;" text="0" />
+                                        <Label style="-fx-text-fill: -color-text-muted; -fx-font-size: 11;" text="En cours" />
+                                    </VBox>
+                                </HBox>
+                            </VBox>
+                            <VBox spacing="8" styleClass="kpi-card-red" HBox.hgrow="ALWAYS">
+                                <HBox alignment="CENTER_LEFT" spacing="12">
+                                    <StackPane styleClass="kpi-icon-circle-red">
+                                        <Region prefHeight="18" prefWidth="18" styleClass="flat-icon, icon-cancel-red" />
+                                    </StackPane>
+                                    <VBox spacing="2">
+                                        <Label fx:id="lblAnnule" style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: #DC2626;" text="0" />
+                                        <Label style="-fx-text-fill: -color-text-muted; -fx-font-size: 11;" text="Annulé" />
+                                    </VBox>
+                                </HBox>
+                            </VBox>
+                            <VBox spacing="8" styleClass="kpi-card-green" HBox.hgrow="ALWAYS">
+                                <HBox alignment="CENTER_LEFT" spacing="12">
+                                    <StackPane styleClass="kpi-icon-circle-green">
+                                        <Region prefHeight="18" prefWidth="18" styleClass="flat-icon, icon-coins-green" />
+                                    </StackPane>
+                                    <VBox spacing="2">
+                                        <Label fx:id="lblRevenue" style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: #059669;" text="0.00 DH" />
+                                        <Label style="-fx-text-fill: -color-text-muted; -fx-font-size: 11;" text="Revenus" />
+                                    </VBox>
+                                </HBox>
+                            </VBox>
+                        </HBox>
+
+                        <!-- TABLE SECTION -->
+                        <VBox spacing="6" styleClass="card">
+                            <HBox alignment="CENTER_LEFT" spacing="10">
+                                <Region prefHeight="18" prefWidth="18" styleClass="flat-icon, icon-table-dark" />
+                                <Label style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: -color-text-header;" text="Analyses du Jour" />
+                            </HBox>
+                            <HBox alignment="CENTER_LEFT" spacing="12" styleClass="toolbar-row">
+                                <Region prefHeight="14" prefWidth="14" styleClass="flat-icon, icon-search-dark" />
+                                <Label style="-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: -color-text-normal;" text="Filtrer par :" />
+                                <ComboBox fx:id="filterStatutCombo" prefWidth="160" promptText="Statut..." styleClass="filter-combo" />
+                                <ComboBox fx:id="filterPayeCombo" prefWidth="160" promptText="Paiement..." styleClass="filter-combo" />
+                                <Button onAction="#handleFilter" styleClass="btn-filter" text="Filtrer" />
+                                <Button onAction="#handleResetFilter" styleClass="btn-outline" text="Réinitialiser" />
+                            </HBox>
+                            <HBox alignment="CENTER_LEFT" spacing="12" styleClass="toolbar-row">
+                                <Region prefHeight="14" prefWidth="14" styleClass="flat-icon, icon-search-dark" />
+                                <Label style="-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: -color-text-normal;" text="Rechercher :" />
+                                <TextField fx:id="searchField" prefWidth="320" promptText="ID, CIN ou nom du patient..." styleClass="search-field" HBox.hgrow="ALWAYS" />
+                                <Button onAction="#handleShowAll" styleClass="btn-outline" text="Afficher tout" />
+                            </HBox>
+                            <TableView fx:id="tableAnalyse" fixedCellSize="40" prefHeight="220.0" prefWidth="784.0" styleClass="styled-table">
+                                <columns>
+                                    <TableColumn fx:id="colId" prefWidth="40" sortable="false" text="ID" />
+                                    <TableColumn fx:id="colCin" prefWidth="90" sortable="false" text="CIN" />
+                                    <TableColumn fx:id="colPatient" prefWidth="130" sortable="false" text="Patient" />
+                                    <TableColumn fx:id="colType" prefWidth="100" sortable="false" text="Type" />
+                                    <TableColumn fx:id="colDate" prefWidth="90" sortable="false" text="Date" />
+                                    <TableColumn fx:id="colStatut" prefWidth="80" sortable="false" text="Statut" />
+                                    <TableColumn fx:id="colResultat" prefWidth="100" sortable="false" text="Résultat" />
+                                    <TableColumn fx:id="colPrix" prefWidth="75" sortable="false" text="Prix" />
+                                    <TableColumn fx:id="colPaye" prefWidth="85" sortable="false" text="Paiement" />
+                                    <TableColumn fx:id="colActions" prefWidth="140" sortable="false" text="Actions" />
+                                </columns>
+                            </TableView>
+                            <Label fx:id="lblTableInfo" style="-fx-text-fill: -color-text-placeholder; -fx-font-size: 11; -fx-padding: 4 0 0 8;" text="Affichage 0 sur 0 résultats" />
+                        </VBox>
+
+                        <!-- RÉSUMÉ (full width) -->
+                        <HBox spacing="15">
+                            <VBox spacing="8" style="-fx-padding: 15;" styleClass="card" HBox.hgrow="ALWAYS">
+                                <HBox alignment="CENTER_LEFT" spacing="10">
+                                    <StackPane style="-fx-background-color: #EFF6FF; -fx-background-radius: 6; -fx-padding: 6;">
+                                        <Region prefHeight="16" prefWidth="16" style="-fx-background-color: #3B82F6;" styleClass="flat-icon, icon-activity-dark" />
+                                    </StackPane>
+                                    <Label style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: -color-text-header;" text="Activité d'aujourd'hui" />
+                                </HBox>
+                                <Label fx:id="lblTodayCount" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #3B82F6; -fx-padding: 5 0 0 0;" text="0 analyses" />
+                            </VBox>
+
+                            <VBox spacing="8" style="-fx-padding: 15;" styleClass="card" HBox.hgrow="ALWAYS">
+                                <HBox alignment="CENTER_LEFT" spacing="10">
+                                    <StackPane style="-fx-background-color: #EEF2FF; -fx-background-radius: 6; -fx-padding: 6;">
+                                        <Region prefHeight="16" prefWidth="16" style="-fx-background-color: #6366F1;" styleClass="flat-icon, icon-flask-dark" />
+                                    </StackPane>
+                                    <Label style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: -color-text-header;" text="Dernières analyses" />
+                                </HBox>
+                                <VBox spacing="4" style="-fx-padding: 5 0 0 0;">
+                                    <Label fx:id="lblLastAnalyse1" style="-fx-font-size: 12; -fx-text-fill: -color-text-normal;" text="—" />
+                                    <Label fx:id="lblLastAnalyse2" style="-fx-font-size: 12; -fx-text-fill: -color-text-normal;" text="—" />
+                                </VBox>
+                            </VBox>
+
+                            <VBox spacing="8" style="-fx-padding: 15;" styleClass="card" HBox.hgrow="ALWAYS">
+                                <HBox alignment="CENTER_LEFT" spacing="10">
+                                    <StackPane style="-fx-background-color: #ECFDF5; -fx-background-radius: 6; -fx-padding: 6;">
+                                        <Region prefHeight="16" prefWidth="16" style="-fx-background-color: #10B981;" styleClass="flat-icon, icon-coins-green" />
+                                    </StackPane>
+                                    <Label style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: -color-text-header;" text="État des paiements" />
+                                </HBox>
+                                <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-padding: 5 0 0 0;">
+                                    <VBox spacing="2">
+                                        <Label style="-fx-font-size: 11; -fx-text-fill: -color-text-muted;" text="Terminés" />
+                                        <Label fx:id="lblPaidCount" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #10B981;" text="0" />
+                                    </VBox>
+                                    <VBox spacing="2">
+                                        <Label style="-fx-font-size: 11; -fx-text-fill: -color-text-muted;" text="En attente" />
+                                        <Label fx:id="lblUnpaidCount" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #F59E0B;" text="0" />
+                                    </VBox>
+                                    <VBox spacing="2">
+                                        <Label style="-fx-font-size: 11; -fx-text-fill: -color-text-muted;" text="Annulés" />
+                                        <Label fx:id="lblCancelledCount" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #94A3B8;" text="0" />
+                                    </VBox>
+                                </HBox>
+                            </VBox>
+                        </HBox>
+
+                        <!-- CHARTS (side by side) -->
+                        <HBox spacing="15">
+                            <VBox styleClass="card" HBox.hgrow="ALWAYS">
+                                <HBox alignment="CENTER_LEFT" spacing="8" style="-fx-padding: 0 0 5 0;">
+                                    <Region prefHeight="16" prefWidth="16" styleClass="flat-icon, icon-barchart-dark" />
+                                    <Label style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: -color-text-header;" text="Analyses de la semaine" />
+                                </HBox>
+                                <StackedBarChart fx:id="weeklyBarChart" animated="false" legendVisible="true" prefHeight="195">
+                                    <xAxis><CategoryAxis fx:id="barXAxis" /></xAxis>
+                                    <yAxis><NumberAxis fx:id="barYAxis" autoRanging="true" /></yAxis>
+                                </StackedBarChart>
+                            </VBox>
+                            <VBox prefWidth="380" styleClass="card">
+                                <HBox alignment="CENTER_LEFT" spacing="8" style="-fx-padding: 0 0 5 0;">
+                                    <Region prefHeight="16" prefWidth="16" styleClass="flat-icon, icon-piechart-dark" />
+                                    <Label style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: -color-text-header;" text="Top Analyses (Aujourd'hui)" />
+                                </HBox>
+                                <PieChart fx:id="typePieChart" animated="true" labelsVisible="true" legendSide="BOTTOM" legendVisible="true" prefHeight="195" />
+                            </VBox>
+                        </HBox>
+                    </VBox>
+                </ScrollPane>
+
+                <!-- ===== PANEL 2: PATIENTS ===== -->
+                <ScrollPane fx:id="panelPatients" fitToWidth="true" hbarPolicy="NEVER" styleClass="content-scroll" visible="false">
+                    <VBox spacing="20" style="-fx-padding: 25;">
+                        <!-- Title + Add Button -->
+                        <HBox alignment="CENTER_LEFT" spacing="15">
+                            <Region prefHeight="22" prefWidth="22" styleClass="flat-icon, icon-patients" />
+                            <Label style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: -color-text-header;" text="Gestion des Patients" />
+                            <Region HBox.hgrow="ALWAYS" />
+                            <Button onAction="#handleAddPatient" styleClass="action-btn-primary">
+                                <graphic>
+                                    <HBox alignment="CENTER" spacing="8">
+                                        <Label style="-fx-text-fill: -color-text-white; -fx-font-size: 16; -fx-font-weight: bold;" text="+" />
+                                        <Label style="-fx-text-fill: -color-text-white; -fx-font-size: 13; -fx-font-weight: bold;" text="Nouveau Patient" />
+                                    </HBox>
+                                </graphic>
+                            </Button>
+                        </HBox>
+
+                        <!-- Search + Table -->
+                        <VBox spacing="6" styleClass="card">
+                            <HBox alignment="CENTER_LEFT" spacing="12" styleClass="toolbar-row">
+                                <Region prefHeight="14" prefWidth="14" styleClass="flat-icon, icon-search-dark" />
+                                <Label style="-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: -color-text-normal;" text="Rechercher :" />
+                                <TextField fx:id="patientSearchField" prefWidth="320" promptText="Nom, CIN ou téléphone..." styleClass="search-field" HBox.hgrow="ALWAYS" />
+                                <Button onAction="#handlePatientShowAll" styleClass="btn-outline" text="Afficher tout" />
+                            </HBox>
+                            <TableView fx:id="tablePatients" prefHeight="300" styleClass="styled-table">
+                                <columns>
+                                    <TableColumn fx:id="colPatId" prefWidth="50" sortable="false" text="ID" />
+                                    <TableColumn fx:id="colPatNom" prefWidth="200" sortable="false" text="Nom Complet" />
+                                    <TableColumn fx:id="colPatCin" prefWidth="120" sortable="false" text="CIN" />
+                                    <TableColumn fx:id="colPatTel" prefWidth="130" sortable="false" text="Téléphone" />
+                                    <TableColumn fx:id="colPatNbAnalyses" prefWidth="100" sortable="false" text="Nb Analyses" />
+                                    <TableColumn fx:id="colPatActions" prefWidth="140" sortable="false" text="Actions" />
+                                </columns>
+                            </TableView>
+                            <Label fx:id="lblPatientInfo" style="-fx-text-fill: -color-text-placeholder; -fx-font-size: 11; -fx-padding: 4 0 0 8;" text="Affichage 0 patients" />
+                        </VBox>
+
+                        <!-- Patient History (visible on click) -->
+                        <VBox fx:id="patientHistoryBox" managed="false" spacing="8" styleClass="card" visible="false">
+                            <HBox alignment="CENTER_LEFT" spacing="10">
+                                <Region prefHeight="16" prefWidth="16" styleClass="flat-icon, icon-flask-dark" />
+                                <Label fx:id="lblPatientHistoryTitle" style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: -color-text-header;" text="Historique des analyses" />
+                                <Region HBox.hgrow="ALWAYS" />
+                                <Button onAction="#handleCloseHistory" styleClass="btn-outline" text="Fermer" />
+                            </HBox>
+                            <TableView fx:id="tablePatientHistory" prefHeight="220" styleClass="styled-table">
+                                <columns>
+                                    <TableColumn fx:id="colHistId" prefWidth="40" sortable="false" text="ID" />
+                                    <TableColumn fx:id="colHistType" prefWidth="120" sortable="false" text="Type" />
+                                    <TableColumn fx:id="colHistDate" prefWidth="100" sortable="false" text="Date" />
+                                    <TableColumn fx:id="colHistStatut" prefWidth="90" sortable="false" text="Statut" />
+                                    <TableColumn fx:id="colHistResultat" prefWidth="130" sortable="false" text="Résultat" />
+                                    <TableColumn fx:id="colHistPrix" prefWidth="80" sortable="false" text="Prix" />
+                                    <TableColumn fx:id="colHistPaye" prefWidth="90" sortable="false" text="Paiement" />
+                                </columns>
+                            </TableView>
+                        </VBox>
+                    </VBox>
+                </ScrollPane>
+
+                <!-- ===== PANEL 3: ANALYSES ===== -->
+                <ScrollPane fx:id="panelAnalyses" fitToWidth="true" hbarPolicy="NEVER" styleClass="content-scroll" visible="false">
+                    <VBox spacing="20" style="-fx-padding: 25;">
+                        <HBox alignment="CENTER_LEFT" spacing="15">
+                            <Region prefHeight="22" prefWidth="22" styleClass="flat-icon, icon-flask" />
+                            <Label style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: -color-text-header;" text="Gestion des Analyses" />
+                            <Region HBox.hgrow="ALWAYS" />
+                            <Button onAction="#handleAddAnalyse" styleClass="action-btn-primary">
+                                <graphic><HBox alignment="CENTER" spacing="8">
+                                    <Label style="-fx-text-fill: -color-text-white; -fx-font-size: 16; -fx-font-weight: bold;" text="+" />
+                                    <Label style="-fx-text-fill: -color-text-white; -fx-font-size: 13; -fx-font-weight: bold;" text="Nouvelle Analyse" />
+                                </HBox></graphic>
+                            </Button>
+                        </HBox>
+                        <!-- All Analyses Table -->
+                        <VBox spacing="6" styleClass="card">
+                            <HBox alignment="CENTER_LEFT" spacing="12" styleClass="toolbar-row">
+                                <Region prefHeight="14" prefWidth="14" styleClass="flat-icon, icon-search-dark" />
+                                <TextField fx:id="analyseSearchField" prefWidth="320" promptText="Rechercher par patient, type, CIN..." styleClass="search-field" HBox.hgrow="ALWAYS" />
+                                <ComboBox fx:id="analyseFilterStatut" prefWidth="140" promptText="Statut..." styleClass="filter-combo" />
+                                <Button onAction="#handleAnalyseShowAll" styleClass="btn-outline" text="Afficher tout" />
+                            </HBox>
+                            <TableView fx:id="tableAllAnalyses" fixedCellSize="40" prefHeight="300" styleClass="styled-table">
+                                <columns>
+                                    <TableColumn fx:id="colAaId" prefWidth="40" text="ID" />
+                                    <TableColumn fx:id="colAaCin" prefWidth="85" text="CIN" />
+                                    <TableColumn fx:id="colAaPatient" prefWidth="130" text="Patient" />
+                                    <TableColumn fx:id="colAaType" prefWidth="100" text="Type" />
+                                    <TableColumn fx:id="colAaDate" prefWidth="90" text="Date" />
+                                    <TableColumn fx:id="colAaStatut" prefWidth="80" text="Statut" />
+                                    <TableColumn fx:id="colAaResultat" prefWidth="100" text="Résultat" />
+                                    <TableColumn fx:id="colAaPrix" prefWidth="70" text="Prix" />
+                                    <TableColumn fx:id="colAaPaye" prefWidth="80" text="Paiement" />
+                                    <TableColumn fx:id="colAaActions" prefWidth="140" text="Actions" />
+                                </columns>
+                            </TableView>
+                            <Label fx:id="lblAllAnalysesInfo" style="-fx-text-fill: -color-text-placeholder; -fx-font-size: 11; -fx-padding: 4 0 0 8;" text="" />
+                        </VBox>
+                        <!-- Types d'analyse -->
+                        <HBox alignment="CENTER_LEFT" spacing="15">
+                            <Region prefHeight="18" prefWidth="18" styleClass="flat-icon, icon-flask-dark" />
+                            <Label style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: -color-text-header;" text="Types d'analyses" />
+                            <Region HBox.hgrow="ALWAYS" />
+                            <Button onAction="#handleAddType" styleClass="action-btn-primary">
+                                <graphic><HBox alignment="CENTER" spacing="8">
+                                    <Label style="-fx-text-fill: -color-text-white; -fx-font-size: 16; -fx-font-weight: bold;" text="+" />
+                                    <Label style="-fx-text-fill: -color-text-white; -fx-font-size: 13; -fx-font-weight: bold;" text="Nouveau Type" />
+                                </HBox></graphic>
+                            </Button>
+                        </HBox>
+                        <VBox spacing="6" styleClass="card">
+                            <TableView fx:id="tableTypes" fixedCellSize="40" prefHeight="220" styleClass="styled-table">
+                                <columns>
+                                    <TableColumn fx:id="colTyId" prefWidth="50" text="ID" />
+                                    <TableColumn fx:id="colTyNom" prefWidth="180" text="Nom" />
+                                    <TableColumn fx:id="colTyPrix" prefWidth="100" text="Prix Défaut" />
+                                    <TableColumn fx:id="colTyResultat" prefWidth="200" text="Résultat Fixe" />
+                                    <TableColumn fx:id="colTyActions" prefWidth="140" text="Actions" />
+                                </columns>
+                            </TableView>
+                        </VBox>
+                    </VBox>
+                </ScrollPane>
+
+                <!-- ===== PANEL 4: FACTURATION ===== -->
+                <ScrollPane fx:id="panelFacturation" fitToWidth="true" hbarPolicy="NEVER" styleClass="content-scroll" visible="false">
+                    <VBox spacing="20" style="-fx-padding: 25;">
+                        <HBox alignment="CENTER_LEFT" spacing="15">
+                            <Region prefHeight="22" prefWidth="22" styleClass="flat-icon, icon-invoice" />
+                            <Label style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: -color-text-header;" text="Facturation" />
+                        </HBox>
+                        <!-- KPI row -->
+                        <HBox spacing="15">
+                            <VBox spacing="6" styleClass="kpi-card-green" HBox.hgrow="ALWAYS">
+                                <Label fx:id="lblFactPaye" style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: #059669;" text="0" />
+                                <Label style="-fx-text-fill: -color-text-muted; -fx-font-size: 11;" text="Total Payé" />
+                            </VBox>
+                            <VBox spacing="6" styleClass="kpi-card-red" HBox.hgrow="ALWAYS">
+                                <Label fx:id="lblFactImpaye" style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: #DC2626;" text="0" />
+                                <Label style="-fx-text-fill: -color-text-muted; -fx-font-size: 11;" text="Total Impayé" />
+                            </VBox>
+                            <VBox spacing="6" styleClass="kpi-card-blue" HBox.hgrow="ALWAYS">
+                                <Label fx:id="lblFactTotal" style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: #2563EB;" text="0" />
+                                <Label style="-fx-text-fill: -color-text-muted; -fx-font-size: 11;" text="Chiffre d'Affaires" />
+                            </VBox>
+                        </HBox>
+                        <!-- Unpaid analyses -->
+                        <VBox spacing="6" styleClass="card">
+                            <HBox alignment="CENTER_LEFT" spacing="10" styleClass="toolbar-row">
+                                <Region prefHeight="16" prefWidth="16" styleClass="flat-icon, icon-invoice" />
+                                <Label style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: -color-text-header;" text="Liste des Factures" />
+                                <Region HBox.hgrow="ALWAYS" />
+                                <Region prefHeight="14" prefWidth="14" styleClass="flat-icon, icon-search-dark" />
+                                <TextField fx:id="factureSearchField" prefWidth="200" promptText="Rechercher patient..." styleClass="search-field" />
+                                <ComboBox fx:id="factureFilterPaye" prefWidth="120" styleClass="filter-combo" />
+                            </HBox>
+                            <TableView fx:id="tableFacturation" fixedCellSize="40" prefHeight="280" styleClass="styled-table">
+                                <columns>
+                                    <TableColumn fx:id="colFaPatient" prefWidth="150" text="Patient" />
+                                    <TableColumn fx:id="colFaCin" prefWidth="90" text="CIN" />
+                                    <TableColumn fx:id="colFaDate" prefWidth="100" text="Date" />
+                                    <TableColumn fx:id="colFaNbAnalyses" prefWidth="70" text="Analyses" />
+                                    <TableColumn fx:id="colFaPrix" prefWidth="90" text="Total (DH)" />
+                                    <TableColumn fx:id="colFaStatut" prefWidth="100" text="Statut" />
+                                    <TableColumn fx:id="colFaPaiement" prefWidth="90" text="Paiement" />
+                                    <TableColumn fx:id="colFaImpression" prefWidth="90" text="Impression" />
+                                </columns>
+                            </TableView>
+                        </VBox>
+                    </VBox>
+                </ScrollPane>
+
+                <!-- ===== PANEL 5: PARAMÈTRES ===== -->
+                <ScrollPane fx:id="panelParametres" fitToWidth="true" hbarPolicy="NEVER" styleClass="content-scroll" visible="false">
+                    <VBox spacing="20" style="-fx-padding: 25;">
+                        <HBox alignment="CENTER_LEFT" spacing="15">
+                            <Region prefHeight="22" prefWidth="22" styleClass="flat-icon, icon-settings" />
+                            <Label style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: -color-text-header;" text="Paramètres" />
+                        </HBox>
+                        <!-- Lab info -->
+                        <VBox spacing="14" styleClass="card">
+                            <Label style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: -color-text-header;" text="Informations du Laboratoire" />
+                            <HBox spacing="15">
+                                <VBox spacing="6" HBox.hgrow="ALWAYS">
+                                    <Label style="-fx-text-fill: -color-text-normal; -fx-font-weight: bold;" text="Nom du laboratoire :" />
+                                    <TextField fx:id="paramLabName" promptText="Labo Pro" styleClass="search-field" />
+                                </VBox>
+                                <VBox spacing="6" HBox.hgrow="ALWAYS">
+                                    <Label style="-fx-text-fill: -color-text-normal; -fx-font-weight: bold;" text="Téléphone :" />
+                                    <TextField fx:id="paramLabPhone" promptText="05XX-XXXXXX" styleClass="search-field" />
+                                </VBox>
+                            </HBox>
+                            <HBox spacing="15">
+                                <VBox spacing="6" HBox.hgrow="ALWAYS">
+                                    <Label style="-fx-text-fill: -color-text-normal; -fx-font-weight: bold;" text="Adresse :" />
+                                    <TextField fx:id="paramLabAddress" promptText="Adresse du laboratoire" styleClass="search-field" />
+                                </VBox>
+                                <VBox spacing="6" HBox.hgrow="ALWAYS">
+                                    <Label style="-fx-text-fill: -color-text-normal; -fx-font-weight: bold;" text="Email :" />
+                                    <TextField fx:id="paramLabEmail" promptText="contact@labo.ma" styleClass="search-field" />
+                                </VBox>
+                            </HBox>
+                            <HBox spacing="15">
+                                <VBox spacing="6" HBox.hgrow="ALWAYS">
+                                    <Label style="-fx-text-fill: -color-text-normal; -fx-font-weight: bold;" text="Responsable :" />
+                                    <TextField fx:id="paramDoctorName" promptText="Admin" styleClass="search-field" />
+                                </VBox>
+                                <VBox spacing="6" HBox.hgrow="ALWAYS">
+                                    <Label style="-fx-text-fill: -color-text-normal; -fx-font-weight: bold;" text="Spécialité :" />
+                                    <TextField fx:id="paramSpeciality" promptText="Biologie Médicale" styleClass="search-field" />
+                                </VBox>
+                            </HBox>
+                            <HBox spacing="15">
+                                <VBox spacing="6" HBox.hgrow="ALWAYS">
+                                    <Label style="-fx-text-fill: -color-text-normal; -fx-font-weight: bold;" text="Thème de l'application :" />
+                                    <ComboBox fx:id="paramTheme" prefWidth="200" styleClass="filter-combo" />
+                                </VBox>
+                            </HBox>
+                            <Button onAction="#handleSaveParams" style="-fx-padding: 10 30;" styleClass="action-btn-primary" text="Enregistrer" />
+                        </VBox>
+                        <!-- Stats -->
+                        <VBox spacing="10" styleClass="card">
+                            <Label style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: -color-text-header;" text="Statistiques Générales" />
+                            <HBox spacing="30">
+                                <VBox spacing="4">
+                                    <Label fx:id="paramTotalPatients" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #2563EB;" text="0" />
+                                    <Label style="-fx-text-fill: -color-text-muted;" text="Patients" />
+                                </VBox>
+                                <VBox spacing="4">
+                                    <Label fx:id="paramTotalAnalyses" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #059669;" text="0" />
+                                    <Label style="-fx-text-fill: -color-text-muted;" text="Analyses" />
+                                </VBox>
+                                <VBox spacing="4">
+                                    <Label fx:id="paramTotalTypes" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #D97706;" text="0" />
+                                    <Label style="-fx-text-fill: -color-text-muted;" text="Types" />
+                                </VBox>
+                            </HBox>
+                        </VBox>
+                        <VBox spacing="8" styleClass="card">
+                            <Label style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: -color-text-header;" text="À propos" />
+                            <Label style="-fx-text-fill: -color-text-muted; -fx-font-size: 12;" text="Labo Pro v1.0 — Système de gestion de laboratoire d'analyses médicales" />
+                            <Label style="-fx-text-fill: -color-text-placeholder; -fx-font-size: 11;" text="Développé avec JavaFX 24" />
+                        </VBox>
+                    </VBox>
+                </ScrollPane>
+
+            </StackPane>
+        </VBox>
+    </center>
+
+</BorderPane>

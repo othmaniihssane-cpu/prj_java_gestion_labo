@@ -1,0 +1,335 @@
+/* ============================================
+   LABO PRO — Dark Theme Variables Overlay
+   ============================================ */
+
+.root {
+    -color-text-header: #F8FAFC;
+    -color-text-title: #E2E8F0;
+    -color-text-normal: #CBD5E1;
+    -color-text-muted: #94A3B8;
+    -color-text-placeholder: #64748B;
+    -color-text-white: #E2E8F0;
+    -color-bg-white: #1E293B;
+    -fx-background-color: #0F172A;
+}
+
+.sidebar {
+    -fx-background-color: #020617;
+}
+
+.top-bar {
+    -fx-background-color: #1E293B;
+    -fx-border-color: transparent transparent #334155 transparent;
+}
+
+.content-scroll {
+    -fx-background: #0F172A;
+}
+
+.content-scroll > .viewport {
+    -fx-background-color: #0F172A;
+}
+
+.card {
+    -fx-background-color: #1E293B;
+    -fx-border-color: #334155;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 6, 0, 0, 2);
+}
+
+.card .label {
+    -fx-text-fill: #E2E8F0;
+}
+
+.action-btn {
+    -fx-background-color: #1E293B;
+    -fx-border-color: #334155;
+    -fx-text-fill: #E2E8F0;
+}
+
+.action-btn:hover {
+    -fx-background-color: #334155;
+    -fx-border-color: #475569;
+}
+
+.action-btn .label {
+    -fx-text-fill: #E2E8F0 !important;
+}
+
+.search-field {
+    -fx-background-color: #0F172A;
+    -fx-border-color: #334155;
+    -fx-text-fill: #E2E8F0;
+}
+
+.search-field:focused {
+    -fx-background-color: #1E293B;
+    -fx-border-color: #3B82F6;
+}
+
+.styled-table {
+    -fx-border-color: #334155;
+}
+
+.styled-table .column-header-background {
+    -fx-background-color: #0F172A;
+}
+
+.styled-table .column-header-background .filler {
+    -fx-background-color: #0F172A;
+}
+
+.styled-table .column-header {
+    -fx-border-color: transparent transparent #334155 transparent;
+}
+
+.styled-table .column-header .label {
+    -fx-text-fill: #94A3B8;
+}
+
+.styled-table .table-row-cell {
+    -fx-background-color: #1E293B;
+    -fx-border-color: transparent transparent #334155 transparent;
+}
+
+.styled-table .table-row-cell:odd {
+    -fx-background-color: #0F172A;
+}
+
+.styled-table .table-row-cell:selected {
+    -fx-background-color: #334155;
+}
+
+.styled-table .table-cell {
+    -fx-text-fill: #E2E8F0;
+}
+
+.styled-table .table-row-cell:selected .text {
+    -fx-fill: #F8FAFC;
+}
+
+.kpi-card-blue, .kpi-card-amber, .kpi-card-yellow, .kpi-card-gray, .kpi-card-red, .kpi-card-green {
+    -fx-background-color: #1E293B;
+    -fx-border-color: #334155;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 5, 0, 0, 2);
+}
+
+.kpi-card-blue .label, .kpi-card-amber .label, .kpi-card-yellow .label, .kpi-card-gray .label, .kpi-card-red .label, .kpi-card-green .label {
+    -fx-text-fill: #E2E8F0 !important;
+}
+
+.filter-combo {
+    -fx-background-color: #0F172A;
+    -fx-border-color: #334155;
+}
+
+.filter-combo .list-cell {
+    -fx-text-fill: #E2E8F0;
+}
+
+.dialog-pane {
+    -fx-background-color: #1E293B;
+}
+
+.dialog-pane .header-panel {
+    -fx-background-color: #0F172A;
+}
+
+.dialog-pane .header-panel .label {
+    -fx-text-fill: #E2E8F0;
+}
+
+.dialog-pane .label {
+    -fx-text-fill: #E2E8F0;
+}
+
+.chart-plot-background {
+    -fx-background-color: #1E293B;
+}
+
+.chart-vertical-grid-lines, .chart-horizontal-grid-lines {
+    -fx-stroke: #334155;
+}
+
+.axis-label, .axis {
+    -fx-tick-label-fill: #94A3B8;
+}
+
+/* Icons adaptation for dark mode */
+.icon-user-dark, .icon-search-dark, .icon-table-dark, .icon-barchart-dark, .icon-piechart-dark, .icon-activity-dark, .icon-flask-dark {
+    -fx-background-color: #E2E8F0;
+}
+
+/* Pie Chart Labels for dark mode */
+.chart-pie-label {
+    -fx-fill: #CBD5E1;
+}
+
+.chart-pie-label-line {
+    -fx-stroke: #475569;
+}
+
+/* ============================================
+   BADGES (explicit overrides to prevent white text in dark mode)
+   ============================================ */
+.root .badge-paye, .styled-table .badge-paye, .card .badge-paye {
+    -fx-text-fill: #065F46;
+    -fx-background-color: #D1FAE5;
+}
+.root .badge-non-paye, .styled-table .badge-non-paye, .card .badge-non-paye {
+    -fx-text-fill: #DC2626;
+    -fx-background-color: #FEE2E2;
+}
+.root .badge-annule, .styled-table .badge-annule, .card .badge-annule {
+    -fx-text-fill: #6B7280;
+    -fx-background-color: #F3F4F6;
+}
+.root .badge-en-cours-action, .styled-table .badge-en-cours-action, .card .badge-en-cours-action {
+    -fx-text-fill: #1D4ED8;
+    -fx-background-color: #DBEAFE;
+}
+.root .badge-en-cours, .styled-table .badge-en-cours, .card .badge-en-cours {
+    -fx-text-fill: #1D4ED8;
+    -fx-background-color: #DBEAFE;
+}
+.root .badge-termine, .styled-table .badge-termine, .card .badge-termine {
+    -fx-text-fill: #065F46;
+    -fx-background-color: #D1FAE5;
+}
+.root .badge-default, .styled-table .badge-default, .card .badge-default {
+    -fx-text-fill: #3730A3;
+    -fx-background-color: #E0E7FF;
+}
+
+/* ============================================
+   COMBOBOX & DATEPICKER GLOBAL STYLING
+   ============================================ */
+.combo-box {
+    -fx-background-color: #0F172A;
+    -fx-border-color: #334155;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+}
+
+.combo-box > .list-cell {
+    -fx-text-fill: #E2E8F0;
+}
+
+.combo-box > .button {
+    -fx-background-color: transparent;
+}
+
+.combo-box > .button > .arrow {
+    -fx-background-color: #94A3B8;
+}
+
+/* ComboBox Dropdown Popups */
+.combo-box-popup > .list-view {
+    -fx-background-color: #1E293B;
+    -fx-border-color: #334155;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 5);
+}
+
+.combo-box-popup > .list-view .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #E2E8F0;
+    -fx-padding: 8 12;
+}
+
+.combo-box-popup > .list-view .list-cell:filled:hover {
+    -fx-background-color: #334155;
+    -fx-text-fill: #F8FAFC;
+    -fx-cursor: hand;
+}
+
+.combo-box-popup > .list-view .list-cell:filled:selected {
+    -fx-background-color: #2563EB;
+    -fx-text-fill: white;
+}
+
+/* ============================================
+   DATE PICKER & POPUP CALENDAR
+   ============================================ */
+.date-picker {
+    -fx-background-color: #0F172A;
+    -fx-border-color: #334155;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+}
+
+.date-picker > .text-field {
+    -fx-background-color: transparent;
+    -fx-text-fill: #E2E8F0;
+    -fx-prompt-text-fill: #64748B;
+}
+
+.date-picker > .button {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+}
+
+.date-picker > .button > .arrow {
+    -fx-background-color: #94A3B8;
+}
+
+/* Date Picker Popup */
+.date-picker-popup {
+    -fx-background-color: #1E293B;
+    -fx-border-color: #334155;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 5);
+}
+
+.date-picker-popup > .month-year-pane {
+    -fx-background-color: #0F172A;
+    -fx-background-radius: 8 8 0 0;
+}
+
+.date-picker-popup > .month-year-pane > .label {
+    -fx-text-fill: #E2E8F0;
+}
+
+.date-picker-popup > .month-year-pane > .button {
+    -fx-background-color: transparent;
+}
+
+.date-picker-popup > .month-year-pane > .button > .left-arrow,
+.date-picker-popup > .month-year-pane > .button > .right-arrow {
+    -fx-background-color: #94A3B8;
+}
+
+.date-picker-popup > .calendar-grid {
+    -fx-background-color: #1E293B;
+}
+
+.date-picker-popup > .calendar-grid > .week-number-cell {
+    -fx-text-fill: #64748B;
+}
+
+.date-picker-popup > .calendar-grid > .day-cell {
+    -fx-text-fill: #E2E8F0;
+    -fx-background-color: transparent;
+}
+
+.date-picker-popup > .calendar-grid > .day-cell:hover {
+    -fx-background-color: #334155;
+    -fx-text-fill: #F8FAFC;
+}
+
+.date-picker-popup > .calendar-grid > .selected {
+    -fx-background-color: #2563EB;
+    -fx-text-fill: white;
+}
+
+.date-picker-popup > .calendar-grid > .previous-month,
+.date-picker-popup > .calendar-grid > .next-month {
+    -fx-text-fill: #475569;
+}
+
+

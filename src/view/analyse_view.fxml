@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="531.0" prefWidth="552.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/25" fx:controller="controller.AnalyseController">
+
+    <VBox blendMode="MULTIPLY" prefWidth="558.0" spacing="10" style="-fx-border-color: #1E90FF; -fx-border-width: 4; -fx-border-radius: 4; -fx-padding: 10;" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <Label layoutX="79.0" layoutY="1.0" text="GESTION LABORATOIRE" textFill="#3b94e6">
+               <font>
+                  <Font name="System Bold" size="32.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="228.0" prefWidth="521.0">
+         <children>
+            <Label layoutX="12.0" layoutY="1.0" text="Formulaire d’ajout">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Line endX="225.33334350585938" endY="-1.049041748046875E-5" fill="#00000024" layoutX="270.0" layoutY="12.0" startX="-122.66664123535156" startY="-1.049041748046875E-5" stroke="#00000036" />
+         </children>
+      </AnchorPane>
+
+              <!-- Form -->
+        <GridPane hgap="10" vgap="10">
+            <padding>
+                <Insets bottom="10" left="10" right="10" top="10" />
+            </padding>
+
+                  <Label text="Patient:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <TextField fx:id="txtPatient" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                  <Label text="Type Analyse:" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+            <TextField fx:id="txtType" GridPane.columnIndex="3" />
+
+                  <Label text="Date:" GridPane.rowIndex="2" />
+            <DatePicker fx:id="dpDate" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                  <Label text="Résultat:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <TextField fx:id="txtResultat" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+   
+                  <Label text="Prix:" GridPane.rowIndex="3" />
+            <TextField fx:id="txtPrix" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Button onAction="#handleClear" prefHeight="25.0" prefWidth="247.0" text="Vider les zones" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+         <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints maxWidth="170.00004069010416" minWidth="132.66669718424478" prefWidth="162.00004069010416" />
+            <ColumnConstraints maxWidth="147.99995930989584" minWidth="77.33329264322916" prefWidth="101.33331298828122" />
+            <ColumnConstraints maxWidth="144.00002034505212" minWidth="86.66670735677087" prefWidth="134.00002034505206" />
+            <ColumnConstraints maxWidth="0.0" minWidth="0.0" prefWidth="0.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+        </GridPane>
+      <AnchorPane prefHeight="52.0" prefWidth="540.0">
+         <children>
+               <Button layoutX="56.0" onAction="#handleAdd" prefHeight="33.0" prefWidth="91.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-padding: 8 16 8 16;" text="Ajouter" />
+               <Button layoutX="156.0" onAction="#handleUpdate" prefHeight="33.0" prefWidth="99.0" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-padding: 8 16 8 16;" text="Modifier" />
+               <Button layoutX="263.0" onAction="#handleDelete" prefHeight="33.0" prefWidth="199.0" style="-fx-background-color: #F44336; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-padding: 8 16 8 16;" text="Supprimer" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="45.0" prefWidth="529.0">
+         <children>
+            <TextField fx:id="searchField" layoutY="2.0" prefHeight="25.0" prefWidth="291.0" promptText="Taper le nom du Patient ..." />
+            <Button fx:id="searchButton" layoutX="300.0" layoutY="1.0" mnemonicParsing="false" onAction="#handleSearch" prefHeight="25.0" prefWidth="113.0" text="Rechercher" />
+            <Button layoutX="421.0" layoutY="1.0" mnemonicParsing="false" onAction="#handleShowAll" text="Afficher tout" />
+         </children>
+      </AnchorPane>
+
+        <!-- Table -->
+        <TableView fx:id="tableAnalyse" prefWidth="529.0" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colId" text="ID" />
+                <TableColumn fx:id="colPatient" text="Patient" />
+                <TableColumn fx:id="colType" text="Type" />
+                <TableColumn fx:id="colDate" prefWidth="79.99998474121094" text="Date" />
+                <TableColumn fx:id="colResultat" text="Résultat" />
+                <TableColumn fx:id="colPrix" text="Prix" />
+            </columns>
+         <VBox.margin>
+            <Insets top="-5.0" />
+         </VBox.margin>
+        </TableView>
+
+    </VBox>
+</AnchorPane>

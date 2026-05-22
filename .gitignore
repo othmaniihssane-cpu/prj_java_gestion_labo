@@ -1,0 +1,34 @@
+# Compiled output
+out/
+bin/
+*.class
+
+# IntelliJ IDEA project files
+.idea/
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Archives and design source files
+*.zip
+*.psd
+*.rar
+
+# Database backups or lock files
+*.sql.lock
+*.properties.lock
+labo_settings.properties
+
+# Large duplicates and temporary files
+ui.jpg
+WhatsApp Image*.jpeg
+
+# Helper scripts and instruction guidelines
+make-repo-contribution.md
+readme-blueprint-generator.md
+refactor.py
+skill*.md
+huminazer*.md
+take_screenshot.ps1
