@@ -16,12 +16,12 @@ Le dossier de captures d'ecran montre les differents aspects de l'interface grap
 
 ### Fenetres de saisie et boites de dialogue
 * **Ajout de patient (6.png)** : Boite de dialogue modale destinee a la creation d'une nouvelle fiche patient avec validation des champs.
-![Dialogue nouveau patient](screenshots/6.png)
+![Dialogue nouveau patient]((screenshots/2.png))
 
 
 * **Enregistrement d'analyse (7.png)** : Fenetre d'attribution d'un examen medical a un patient existant avec selection pre-remplie.
 
-![Dialogue nouvelle analyse](screenshots/7.png)
+![Dialogue nouvelle analyse](screenshots/3.png)
 
 * **Saisie des resultats numeriques (8.png)** : Formulaire de validation des mesures du laboratoire par rapport aux valeurs de reference.
 ![Dialogue de saisie de resultats](screenshots/8.png)
@@ -36,13 +36,16 @@ Le dossier de captures d'ecran montre les differents aspects de l'interface grap
 ### Gestion des examens et base de donnees
 
 * **Liste des analyses medicales (3.png)** : Affiche le tableau de suivi des examens medicaux avec les statuts colores pour chaque echantillon.
+![Dialogue nouvelle analyse](screenshots/7.png)
+
 * **Detail de la facturation et paiements (4.png)** : Montre la gestion financiere de chaque dossier avec les boutons contextuels pour declencher un encaissement rapide ou imprimer une quittance.
+![Interface de facturation](screenshots/4.png)
+
 * **Formulaire de configuration du laboratoire (5.png)** : Permet de renseigner les informations de contact et le nom du medecin biologiste responsable pour personnaliser l'en-tete des documents.
 
+![Tableau de bord - Mode sombre](screenshots/10.png)
 
-![Suivi des echantillons](screenshots/3.png)
-![Interface de facturation](screenshots/4.png)
-![Formulaire de configuration](screenshots/5.png)
+
 
 
 ### Interface en mode sombre premium
@@ -52,7 +55,7 @@ Le dossier de captures d'ecran montre les differents aspects de l'interface grap
 * **Popups et menus styles (12.png)** : Illustre l'application reussie du style sombre sur les fenetres volantes de type ComboBox et les fenetres de calendrier DatePicker.
 
 
-![Tableau de bord - Mode sombre](screenshots/10.png)
+
 ![Tableaux de donnees - Mode sombre](screenshots/11.png)
 ![Menus et calendriers - Mode sombre](screenshots/12.png)
 
