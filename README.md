@@ -13,13 +13,9 @@ Le dossier de captures d'ecran montre les differents aspects de l'interface grap
 * **Vue globale en mode clair (1.png)** : Cette capture montre le tableau de bord general lors du premier demarrage en mode clair. L'arriere-plan blanc pur et les cartes d'indicateurs de couleur claire mettent en evidence le nombre de patients inscrits, les analyses en cours et les gains financiers. Le graphique central montre la repartition quotidienne des analyses.
 ![Tableau de bord - Mode clair](screenshots/1.png)
 
-* **Liste et recherche de patients (2.png)** : Illustre le panneau de recherche et de consultation de la base de donnees des patients. Une barre de saisie permet de filtrer en temps reel la liste des dossiers par nom ou par numero de carte nationale (CIN).
-
 
 ### Fenetres de saisie et boites de dialogue
-
 * **Ajout de patient (6.png)** : Boite de dialogue modale destinee a la creation d'une nouvelle fiche patient avec validation des champs.
-
 ![Dialogue nouveau patient](screenshots/6.png)
 
 
@@ -31,7 +27,6 @@ Le dossier de captures d'ecran montre les differents aspects de l'interface grap
 ![Dialogue de saisie de resultats](screenshots/8.png)
 
 * **Filtres de recherche multicriteria (9.png)** : Panneau de recherche approfondie pour extraire l'historique d'un patient.
-![Recherche de dossiers patients](screenshots/2.png)
 
 
 ![Filtres de recherche](screenshots/9.png)
