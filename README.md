@@ -71,7 +71,7 @@ Le dossier de captures d'ecran montre les differents aspects de l'interface grap
 
 ---
 
-## Architecture et fonctionnement du code
+## Architecture d'Application (MVC + DAO)
 
 L'application est construite selon le patron de conception MVC (Modele-Vue-Controleur) associe a des objets d'acces aux donnees (DAO) pour isoler les requetes SQL du reste de la logique applicative.
 
@@ -79,6 +79,64 @@ L'application est construite selon le patron de conception MVC (Modele-Vue-Contr
 * **Vue** : Les fichiers FXML du dossier `src/view` definissent la structure de l'interface tandis que les fichiers CSS appliquent la charte graphique.
 * **Controleur** : Les controleurs du dossier `src/controller` interceptent les evenements utilisateur et mettent a jour la vue en fonction des donnees.
 * **DAO** : Les classes du dossier `src/dao` executent les requetes SQL de creation, lecture, mise a jour et suppression dans la base MySQL.
+
+```mermaid
+graph TD
+    %% Define Styles
+    classDef ui fill:#3B82F6,stroke:#1E3A8A,stroke-width:2px,color:#fff;
+    classDef controller fill:#10B981,stroke:#065F46,stroke-width:2px,color:#fff;
+    classDef dao fill:#F59E0B,stroke:#92400E,stroke-width:2px,color:#fff;
+    classDef db fill:#EF4444,stroke:#991B1B,stroke-width:2px,color:#fff;
+    classDef model fill:#8B5CF6,stroke:#5B21B6,stroke-width:2px,color:#fff;
+
+    %% Architecture Nodes
+    subgraph UI ["Couche Présentation (Vue - FXML & CSS)"]
+        V1["dashboard.fxml (Tableau de bord)"]:::ui
+        V2["analyse_view.fxml (Gestion Analyses)"]:::ui
+        V3["styles.css & dark-theme.css"]:::ui
+    end
+
+    subgraph CTRL ["Couche Contrôle (Contrôleurs JavaFX)"]
+        C1["DashboardController.java"]:::controller
+        C2["AnalyseController.java"]:::controller
+    end
+
+    subgraph DAO ["Couche Accès Données (DAO)"]
+        D1["PatientDAO.java"]:::dao
+        D2["AnalyseDAO.java"]:::dao
+        D3["TypeAnalyseDAO.java"]:::dao
+    end
+
+    subgraph DB ["Moteur de Stockage (MySQL)"]
+        DB1[("Base de Données MySQL")]:::db
+    end
+
+    subgraph MDL ["Couche Modèle (Entités/JavaBeans)"]
+        M1["Patient.java"]:::model
+        M2["Analyse.java"]:::model
+        M3["TypeAnalyse.java"]:::model
+        M4["Facture.java"]:::model
+    end
+
+    %% Architecture Links
+    V1 -->|Événements utilisateur| C1
+    V2 -->|Événements utilisateur| C2
+    C1 -->|Applique les styles| V3
+    C2 -->|Applique les styles| V3
+
+    C1 -->|Consulte / Modifie| D1
+    C1 -->|Consulte / Modifie| D2
+    C2 -->|Consulte / Modifie| D3
+
+    D1 -->|Requêtes SQL CRUD| DB1
+    D2 -->|Requêtes SQL CRUD| DB1
+    D3 -->|Requêtes SQL CRUD| DB1
+
+    D1 .->|Mappe les données| M1
+    D2 .->|Mappe les données| M2
+    D3 .->|Mappe les données| M3
+    C1 .->|Utilise les entités| MDL
+    C2 .->|Utilise les entités| MDL
 
 ### Logique du changement de theme
 
