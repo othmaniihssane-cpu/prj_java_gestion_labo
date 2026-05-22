@@ -11,10 +11,27 @@ Le dossier de captures d'ecran montre les differents aspects de l'interface grap
 ### Tableau de bord general et vue principale
 
 * **Vue globale en mode clair (1.png)** : Cette capture montre le tableau de bord general lors du premier demarrage en mode clair. L'arriere-plan blanc pur et les cartes d'indicateurs de couleur claire mettent en evidence le nombre de patients inscrits, les analyses en cours et les gains financiers. Le graphique central montre la repartition quotidienne des analyses.
+![Tableau de bord - Mode clair](screenshots/1.png)
+
 * **Liste et recherche de patients (2.png)** : Illustre le panneau de recherche et de consultation de la base de donnees des patients. Une barre de saisie permet de filtrer en temps reel la liste des dossiers par nom ou par numero de carte nationale (CIN).
 
-![Tableau de bord - Mode clair](screenshots/1.png)
+
+### Fenetres de saisie et boites de dialogue
+
+* **Ajout de patient (6.png)** : Boite de dialogue modale destinee a la creation d'une nouvelle fiche patient avec validation des champs.
+![Dialogue nouveau patient](screenshots/6.png)
+
+* **Enregistrement d'analyse (7.png)** : Fenetre d'attribution d'un examen medical a un patient existant avec selection pre-remplie.
+![Dialogue nouvelle analyse](screenshots/7.png)
+
+* **Saisie des resultats numeriques (8.png)** : Formulaire de validation des mesures du laboratoire par rapport aux valeurs de reference.
+![Dialogue de saisie de resultats](screenshots/8.png)
+
+* **Filtres de recherche multicriteria (9.png)** : Panneau de recherche approfondie pour extraire l'historique d'un patient.
 ![Recherche de dossiers patients](screenshots/2.png)
+![Filtres de recherche](screenshots/9.png)
+
+
 
 ### Gestion des examens et base de donnees
 
@@ -22,27 +39,18 @@ Le dossier de captures d'ecran montre les differents aspects de l'interface grap
 * **Detail de la facturation et paiements (4.png)** : Montre la gestion financiere de chaque dossier avec les boutons contextuels pour declencher un encaissement rapide ou imprimer une quittance.
 * **Formulaire de configuration du laboratoire (5.png)** : Permet de renseigner les informations de contact et le nom du medecin biologiste responsable pour personnaliser l'en-tete des documents.
 
+
 ![Suivi des echantillons](screenshots/3.png)
 ![Interface de facturation](screenshots/4.png)
 ![Formulaire de configuration](screenshots/5.png)
 
-### Fenetres de saisie et boites de dialogue
-
-* **Ajout de patient (6.png)** : Boite de dialogue modale destinee a la creation d'une nouvelle fiche patient avec validation des champs.
-* **Enregistrement d'analyse (7.png)** : Fenetre d'attribution d'un examen medical a un patient existant avec selection pre-remplie.
-* **Saisie des resultats numeriques (8.png)** : Formulaire de validation des mesures du laboratoire par rapport aux valeurs de reference.
-* **Filtres de recherche multicriteria (9.png)** : Panneau de recherche approfondie pour extraire l'historique d'un patient.
-
-![Dialogue nouveau patient](screenshots/6.png)
-![Dialogue nouvelle analyse](screenshots/7.png)
-![Dialogue de saisie de resultats](screenshots/8.png)
-![Filtres de recherche](screenshots/9.png)
 
 ### Interface en mode sombre premium
 
 * **Dashboard en mode sombre (10.png)** : Affiche la transition complete de l'interface centrale vers un theme ardoise fonce (`#1E293B`) avec des textes contrastes en gris clair (`#E2E8F0`).
 * **Tableau des analyses en mode sombre (11.png)** : Montre le rendu du tableau d'analyses sous le theme sombre, garantissant que les statuts restent parfaitement lisibles.
 * **Popups et menus styles (12.png)** : Illustre l'application reussie du style sombre sur les fenetres volantes de type ComboBox et les fenetres de calendrier DatePicker.
+
 
 ![Tableau de bord - Mode sombre](screenshots/10.png)
 ![Tableaux de donnees - Mode sombre](screenshots/11.png)
