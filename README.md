@@ -137,8 +137,8 @@ graph TD
     D3 .->|Mappe les données| M3
     C1 .->|Utilise les entités| MDL
     C2 .->|Utilise les entités| MDL
-
-### Logique du changement de theme
+ ```
+ ### Logique du changement de theme
 
 La bascule entre le mode clair et le mode sombre s'effectue dynamiquement en memoire. Lorsqu'un utilisateur selectionne le mode sombre, le controleur charge la feuille de style `dark-theme.css` et l'ajoute directement au noeud racine de la scene principale. Pour resoudre les limitations de JavaFX avec les fenetres secondaires (dialogues et menus contextuels), le controleur applique la feuille de style au niveau de l'objet scene de chaque dialogue et propage le style aux popups du systeme.
 
@@ -187,3 +187,4 @@ run.bat
 ## Licence
 
 Ce projet est distribue sous la licence MIT. Vous pouvez librement l'utiliser et le modifier.
+
