@@ -34,9 +34,12 @@ Le dossier de captures d'ecran montre les differents aspects de l'interface grap
 
 ### Gestion des examens et base de donnees
 
+* **Liste des patients médicaux **  : affichage du tableau des patients. Lorsqu’on clique sur “Historique”, un tableau contenant toutes les analyses précédemment effectuées pour le patient apparaît.
+![Dialogue nouvelle analyse](screenshots/7.png)
+
 * **Liste des analyses medicales (3.png)** : Affiche le tableau de suivi des examens medicaux avec les statuts colores pour chaque echantillon.
 ![Dialogue de saisie de resultats](screenshots/8.png)
-![Dialogue nouvelle analyse](screenshots/7.png)
+
 
 * **Detail de la facturation et paiements (4.png)** : Montre la gestion financiere de chaque dossier avec les boutons contextuels pour declencher un encaissement rapide ou imprimer une quittance.
 ![Filtres de recherche](screenshots/9.png)
