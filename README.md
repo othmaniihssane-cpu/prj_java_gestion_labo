@@ -19,16 +19,19 @@ Le dossier de captures d'ecran montre les differents aspects de l'interface grap
 ### Fenetres de saisie et boites de dialogue
 
 * **Ajout de patient (6.png)** : Boite de dialogue modale destinee a la creation d'une nouvelle fiche patient avec validation des champs.
-![Dialogue nouveau patient](screenshots/6.png)
+
+![Recherche de dossiers patients](screenshots/2.png)
+
 
 * **Enregistrement d'analyse (7.png)** : Fenetre d'attribution d'un examen medical a un patient existant avec selection pre-remplie.
-![Dialogue nouvelle analyse](screenshots/7.png)
+
 
 * **Saisie des resultats numeriques (8.png)** : Formulaire de validation des mesures du laboratoire par rapport aux valeurs de reference.
 ![Dialogue de saisie de resultats](screenshots/8.png)
 
 * **Filtres de recherche multicriteria (9.png)** : Panneau de recherche approfondie pour extraire l'historique d'un patient.
-![Recherche de dossiers patients](screenshots/2.png)
+![Dialogue nouveau patient](screenshots/6.png)
+![Dialogue nouvelle analyse](screenshots/7.png)
 ![Filtres de recherche](screenshots/9.png)
 
 
