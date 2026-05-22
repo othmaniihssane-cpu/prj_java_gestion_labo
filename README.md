@@ -11,22 +11,26 @@ Le dossier de captures d'ecran montre les differents aspects de l'interface grap
 ### Tableau de bord general et vue principale
 
 * **Vue globale en mode clair (1.png)** : Cette capture montre le tableau de bord general lors du premier demarrage en mode clair. L'arriere-plan blanc pur et les cartes d'indicateurs de couleur claire mettent en evidence le nombre de patients inscrits, les analyses en cours et les gains financiers. Le graphique central montre la repartition quotidienne des analyses.
+
 ![Tableau de bord - Mode clair](screenshots/1.png)
 
 
 ### Fenetres de saisie et boites de dialogue
-* **Ajout de patient (6.png)** : Boite de dialogue modale destinee a la creation d'une nouvelle fiche patient avec validation des champs.
+* **Ajout de patient** : Boite de dialogue modale destinee a la creation d'une nouvelle fiche patient avec validation des champs.
+
 ![Dialogue nouveau patient](screenshots/2.png)
 
 
-* **Enregistrement d'analyse (7.png)** : Fenetre d'attribution d'un examen medical a un patient existant avec selection pre-remplie.
+* **Enregistrement d'analyse** : Fenetre d'attribution d'un examen medical a un patient existant avec selection pre-remplie.
 
 ![Dialogue nouvelle analyse](screenshots/3.png)
 
-* **Saisie des resultats numeriques (8.png)** : Formulaire de validation des mesures du laboratoire par rapport aux valeurs de reference.
+* **Saisie des resultats numeriques** : Formulaire de validation des mesures du laboratoire par rapport aux valeurs de reference.
+
 ![Interface de facturation](screenshots/4.png)
 
-* **Filtres de recherche multicriteria (9.png)** : Panneau de recherche approfondie pour extraire l'historique d'un patient.
+* **Filtres de recherche multicriteria** : Panneau de recherche approfondie pour extraire l'historique d'un patient.
+  
 ![Filtres de recherche](screenshots/5.png)
 
 
@@ -34,17 +38,20 @@ Le dossier de captures d'ecran montre les differents aspects de l'interface grap
 
 ### Gestion des examens et base de donnees
 
-* **Liste des patients médicaux **  : affichage du tableau des patients. Lorsqu’on clique sur “Historique”, un tableau contenant toutes les analyses précédemment effectuées pour le patient apparaît.
+* **Liste des patients médicaux**  : affichage du tableau des patients. Lorsqu’on clique sur “Historique”, un tableau contenant toutes les analyses précédemment effectuées pour le patient apparaît.
+  
 ![Dialogue nouvelle analyse](screenshots/7.png)
 
-* **Liste des analyses medicales (3.png)** : Affiche le tableau de suivi des examens medicaux avec les statuts colores pour chaque echantillon.
+* **Liste des analyses medicales** : Affiche le tableau de suivi des examens medicaux avec les statuts colores pour chaque echantillon.
+  
 ![Dialogue de saisie de resultats](screenshots/8.png)
 
 
-* **Detail de la facturation et paiements (4.png)** : Montre la gestion financiere de chaque dossier avec les boutons contextuels pour declencher un encaissement rapide ou imprimer une quittance.
+* **Detail de la facturation et paiements** : Montre la gestion financiere de chaque dossier avec les boutons contextuels pour declencher un encaissement rapide ou imprimer une quittance.
+
 ![Filtres de recherche](screenshots/9.png)
 
-* **Formulaire de configuration du laboratoire (5.png)** : Permet de renseigner les informations de contact et le nom du medecin biologiste responsable pour personnaliser l'en-tete des documents.
+* **Formulaire de configuration du laboratoire** : Permet de renseigner les informations de contact et le nom du medecin biologiste responsable pour personnaliser l'en-tete des documents.
 
 ![Tableau de bord - Mode sombre](screenshots/10.png)
 
@@ -53,9 +60,9 @@ Le dossier de captures d'ecran montre les differents aspects de l'interface grap
 
 ### Interface en mode sombre premium
 
-* **Dashboard en mode sombre (10.png)** : Affiche la transition complete de l'interface centrale vers un theme ardoise fonce (`#1E293B`) avec des textes contrastes en gris clair (`#E2E8F0`).
-* **Tableau des analyses en mode sombre (11.png)** : Montre le rendu du tableau d'analyses sous le theme sombre, garantissant que les statuts restent parfaitement lisibles.
-* **Popups et menus styles (12.png)** : Illustre l'application reussie du style sombre sur les fenetres volantes de type ComboBox et les fenetres de calendrier DatePicker.
+* **Dashboard en mode sombre** : Affiche la transition complete de l'interface centrale vers un theme ardoise fonce (`#1E293B`) avec des textes contrastes en gris clair (`#E2E8F0`).
+* **Tableau des analyses en mode sombre** : Montre le rendu du tableau d'analyses sous le theme sombre, garantissant que les statuts restent parfaitement lisibles.
+* **Popups et menus styles** : Illustre l'application reussie du style sombre sur les fenetres volantes de type ComboBox et les fenetres de calendrier DatePicker.
 
 
 
