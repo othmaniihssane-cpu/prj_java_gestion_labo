@@ -1,122 +1,126 @@
-# Systeme de gestion de laboratoire Labo Pro
-
-Ce depot contient le code source de Labo Pro, une application de bureau developpee en JavaFX et MySQL destinee a la gestion complete des laboratoires d'analyses medicales. Elle propose des outils de suivi des dossiers patients, de planification des examens et de facturation, avec un support natif pour le changement de theme en temps reel.
+🌐 **Language:** [🇬🇧 English](README.md) | [🇫🇷 Français](README.fr.md)
 
 ---
 
-## Guide visuel de l'interface
+# Labo Pro — Laboratory Management System
 
-### Tableau de bord general et vue principale
-
-* **Vue globale en mode clair (1.png)** : Cette capture montre le tableau de bord general lors du premier demarrage en mode clair. L'arriere-plan blanc pur et les cartes d'indicateurs de couleur claire mettent en evidence le nombre de patients inscrits, les analyses en cours et les gains financiers. Le graphique central montre la repartition quotidienne des analyses.
-
-![Tableau de bord - Mode clair](screenshots/1.png)
-
-
-### Fenetres de saisie et boites de dialogue
-* **Ajout de patient** : Boite de dialogue modale destinee a la creation d'une nouvelle fiche patient avec validation des champs.
-
-![Dialogue nouveau patient](screenshots/2.png)
-
-
-* **Enregistrement d'analyse** : Fenetre d'attribution d'un examen medical a un patient existant avec selection pre-remplie.
-
-![Dialogue nouvelle analyse](screenshots/3.png)
-
-* **Saisie des resultats numeriques** : Formulaire de validation des mesures du laboratoire par rapport aux valeurs de reference.
-
-![Interface de facturation](screenshots/4.png)
-
-* **Filtres de recherche multicriteria** : Panneau de recherche approfondie pour extraire l'historique d'un patient.
-  
-![Filtres de recherche](screenshots/5.png)
-
-
-
-
-### Gestion des examens et base de donnees
-
-* **Liste des patients médicaux**  : affichage du tableau des patients. Lorsqu’on clique sur “Historique”, un tableau contenant toutes les analyses précédemment effectuées pour le patient apparaît.
-  
-![Dialogue nouvelle analyse](screenshots/7.png)
-
-* **Liste des analyses medicales** : Affiche le tableau de suivi des examens medicaux avec les statuts colores pour chaque echantillon.
-  
-![Dialogue de saisie de resultats](screenshots/8.png)
-
-
-* **Detail de la facturation et paiements** : Montre la gestion financiere de chaque dossier avec les boutons contextuels pour declencher un encaissement rapide ou imprimer une quittance.
-
-![Filtres de recherche](screenshots/9.png)
-
-* **Formulaire de configuration du laboratoire** : Permet de renseigner les informations de contact et le nom du medecin biologiste responsable pour personnaliser l'en-tete des documents.
-
-![Tableau de bord - Mode sombre](screenshots/10.png)
-
-
-
-
-### Interface en mode sombre premium
-
-* **Dashboard en mode sombre** : Affiche la transition complete de l'interface centrale vers un theme ardoise fonce (`#1E293B`) avec des textes contrastes en gris clair (`#E2E8F0`).
-* **Tableau des analyses en mode sombre** : Montre le rendu du tableau d'analyses sous le theme sombre, garantissant que les statuts restent parfaitement lisibles.
-* **Popups et menus styles** : Illustre l'application reussie du style sombre sur les fenetres volantes de type ComboBox et les fenetres de calendrier DatePicker.
-
-
-
-![Tableaux de donnees - Mode sombre](screenshots/11.png)
-![Menus et calendriers - Mode sombre](screenshots/12.png)
+This repository contains the source code of Labo Pro, a desktop application built with JavaFX and MySQL designed for the complete management of medical analysis laboratories. It provides tools for patient record tracking, test scheduling, and billing, with native support for real-time theme switching.
 
 ---
 
-## Architecture d'Application (MVC + DAO)
+## Visual Interface Guide
 
-L'application est construite selon le patron de conception MVC (Modele-Vue-Controleur) associe a des objets d'acces aux donnees (DAO) pour isoler les requetes SQL du reste de la logique applicative.
+### General Dashboard and Main View
 
-* **Modele** : Les classes du dossier `src/model` representent les entites de la base de donnees sous forme de Java Beans simples.
-* **Vue** : Les fichiers FXML du dossier `src/view` definissent la structure de l'interface tandis que les fichiers CSS appliquent la charte graphique.
-* **Controleur** : Les controleurs du dossier `src/controller` interceptent les evenements utilisateur et mettent a jour la vue en fonction des donnees.
-* **DAO** : Les classes du dossier `src/dao` executent les requetes SQL de creation, lecture, mise a jour et suppression dans la base MySQL.
+* **Light mode overview (1.png)**: This capture shows the general dashboard on first launch in light mode. The pure white background and light-colored indicator cards highlight the number of registered patients, ongoing analyses, and financial earnings. The central chart displays the daily distribution of analyses.
+
+![Dashboard - Light mode](screenshots/1.png)
+
+
+### Input Windows and Dialog Boxes
+* **Add patient**: Modal dialog box for creating a new patient record with field validation.
+
+![New patient dialog](screenshots/2.png)
+
+
+* **Analysis registration**: Window for assigning a medical test to an existing patient with pre-filled selection.
+
+![New analysis dialog](screenshots/3.png)
+
+* **Numerical results entry**: Form for validating laboratory measurements against reference values.
+
+![Billing interface](screenshots/4.png)
+
+* **Multi-criteria search filters**: Advanced search panel for extracting a patient's history.
+  
+![Search filters](screenshots/5.png)
+
+
+
+
+### Test Management and Database
+
+* **Medical patient list**: Displays the patient table. When clicking "History", a table containing all previously performed analyses for the patient appears.
+  
+![New analysis dialog](screenshots/7.png)
+
+* **Medical analyses list**: Displays the medical test tracking table with color-coded statuses for each sample.
+  
+![Results entry dialog](screenshots/8.png)
+
+
+* **Billing and payments detail**: Shows the financial management of each record with contextual buttons to trigger quick payment or print a receipt.
+
+![Search filters](screenshots/9.png)
+
+* **Laboratory configuration form**: Allows entering contact information and the responsible biologist's name to customize document headers.
+
+![Dashboard - Dark mode](screenshots/10.png)
+
+
+
+
+### Premium Dark Mode Interface
+
+* **Dark mode dashboard**: Shows the complete transition of the main interface to a dark slate theme (`#1E293B`) with contrasting light gray text (`#E2E8F0`).
+* **Dark mode analysis table**: Demonstrates the analysis table rendered under the dark theme, ensuring that statuses remain perfectly readable.
+* **Styled popups and menus**: Illustrates the successful application of the dark style to ComboBox flyout windows and DatePicker calendar windows.
+
+
+
+![Data tables - Dark mode](screenshots/11.png)
+![Menus and calendars - Dark mode](screenshots/12.png)
+
+---
+
+## Application Architecture (MVC + DAO)
+
+The application is built following the MVC (Model-View-Controller) design pattern combined with Data Access Objects (DAO) to isolate SQL queries from the rest of the application logic.
+
+* **Model**: Classes in the `src/model` folder represent database entities as simple Java Beans.
+* **View**: FXML files in the `src/view` folder define the interface structure while CSS files apply the visual design.
+* **Controller**: Controllers in the `src/controller` folder intercept user events and update the view based on the data.
+* **DAO**: Classes in the `src/dao` folder execute SQL queries for creating, reading, updating, and deleting records in the MySQL database.
 
 ```mermaid
 flowchart TD
-    U([Utilisateur]) --> V
+    U([User]) --> V
 
-    subgraph V ["Vue (FXML + CSS)"]
+    subgraph V ["View (FXML + CSS)"]
         V1[dashboard.fxml]
         V2[analyse_view.fxml]
         V3[styles.css / dark-theme.css]
     end
 
-    V -->|Clics & saisies| C
+    V -->|Clicks & inputs| C
 
-    subgraph C ["Contrôleur (Java)"]
+    subgraph C ["Controller (Java)"]
         C1[DashboardController]
         C2[AnalyseController]
     end
 
-    C -->|Appelle les méthodes CRUD| D
+    C -->|Calls CRUD methods| D
 
-    subgraph D ["DAO (Accès données)"]
+    subgraph D ["DAO (Data Access)"]
         D1[PatientDAO]
         D2[AnalyseDAO]
         D3[TypeAnalyseDAO]
     end
 
-    D -->|Requêtes SQL| DB[("MySQL<br/>Base de données")]
-    DB -->|Résultats| D
-    D -->|Objets Java| M
+    D -->|SQL Queries| DB[("MySQL<br/>Database")]
+    DB -->|Results| D
+    D -->|Java Objects| M
 
-    subgraph M ["Modèle (JavaBeans)"]
+    subgraph M ["Model (JavaBeans)"]
         M1[Patient]
         M2[Analyse]
         M3[TypeAnalyse]
         M4[Facture]
     end
 
-    M -->|Données formatées| C
-    C -->|Met à jour l affichage| V
-    V -->|Interface actualisée| U
+    M -->|Formatted data| C
+    C -->|Updates display| V
+    V -->|Refreshed interface| U
 
     style U fill:#6366F1,stroke:#4338CA,color:#fff
     style V fill:#3B82F6,stroke:#1E40AF,color:#fff
@@ -137,53 +141,52 @@ flowchart TD
     style M3 fill:#A78BFA,stroke:#7C3AED,color:#fff
     style M4 fill:#A78BFA,stroke:#7C3AED,color:#fff
  ```
- ### Logique du changement de theme
+ ### Theme Switching Logic
 
-La bascule entre le mode clair et le mode sombre s'effectue dynamiquement en memoire. Lorsqu'un utilisateur selectionne le mode sombre, le controleur charge la feuille de style `dark-theme.css` et l'ajoute directement au noeud racine de la scene principale. Pour resoudre les limitations de JavaFX avec les fenetres secondaires (dialogues et menus contextuels), le controleur applique la feuille de style au niveau de l'objet scene de chaque dialogue et propage le style aux popups du systeme.
-
----
-
-## Fonctionnalites principales
-
-* **Suivi des dossiers patients** : Enregistrement, recherche rapide par numero de carte nationale (CIN) ou par nom, et historique complet des examens associes.
-* **Gestion des analyses** : Parametrage des types d'examens avec des valeurs de reference et des tarifs pre-configures. Suivi de l'etat d'avancement des echantillons.
-* **Facturation integre** : Suivi des paiements, encaissement rapide en un clic et generation automatique de factures pretes a l'impression.
-* **Statistiques interactives** : Graphiques de repartition et indicateurs financiers mis a jour en temps reel a chaque modification de donnees.
+The toggle between light and dark mode is performed dynamically in memory. When a user selects dark mode, the controller loads the `dark-theme.css` stylesheet and adds it directly to the root node of the main scene. To work around JavaFX limitations with secondary windows (dialogs and context menus), the controller applies the stylesheet at the scene object level of each dialog and propagates the style to system popups.
 
 ---
 
-## Guide d'installation et de configuration
+## Key Features
 
-### Configuration de la base de donnees
+* **Patient record tracking**: Registration, fast search by national ID card number (CIN) or name, and complete history of associated tests.
+* **Analysis management**: Configuration of test types with reference values and pre-set pricing. Sample progress status tracking.
+* **Integrated billing**: Payment tracking, one-click quick payment, and automatic generation of print-ready invoices.
+* **Interactive statistics**: Distribution charts and financial indicators updated in real time with every data change.
 
-1. Assurez-vous qu'un serveur MySQL local est actif sur votre machine.
-2. Executez le script SQL fourni a la racine pour initialiser les tables et les donnees initiales :
+---
+
+## Installation and Configuration Guide
+
+### Database Setup
+
+1. Make sure a local MySQL server is running on your machine.
+2. Run the SQL script provided at the root to initialize the tables and seed data:
    ```bash
    mysql -u root -p < "script base de donnee.sql"
    ```
 
-### Lancement rapide sous Windows
+### Quick Launch on Windows
 
-Un script automatique est fourni pour compiler et lancer l'application en un clic. Double-cliquez simplement sur le fichier :
+An automated script is provided to compile and launch the application in one click. Simply double-click the file:
 ```bash
 run.bat
 ```
 
-### Importation dans IntelliJ IDEA
+### Importing into IntelliJ IDEA
 
-1. Ouvrez IntelliJ IDEA et importez le dossier racine du projet.
-2. Dans la configuration de la structure du projet, definissez le SDK de projet sur Java 17 ou une version superieure.
-3. Ajoutez le dossier `lib/javafx-sdk-24.0.1/lib` comme bibliotheque globale de projet.
-4. Creez une nouvelle configuration d'application pour executer la classe principale `Main`.
-5. Ajoutez les parametres VM suivants pour charger les modules de l'interface graphique :
+1. Open IntelliJ IDEA and import the project root folder.
+2. In the project structure configuration, set the project SDK to Java 17 or higher.
+3. Add the `lib/javafx-sdk-24.0.1/lib` folder as a global project library.
+4. Create a new application run configuration to execute the main class `Main`.
+5. Add the following VM options to load the graphical interface modules:
    ```text
    --module-path "lib/javafx-sdk-24.0.1/lib" --add-modules javafx.controls,javafx.fxml
    ```
-6. Executez l'application.
+6. Run the application.
 
 ---
 
-## Licence
+## License
 
-Ce projet est distribue sous la licence MIT. Vous pouvez librement l'utiliser et le modifier.
-
+This project is distributed under the MIT License. You are free to use and modify it.
